@@ -7,6 +7,9 @@ import org.openqa.selenium.support.FindBy;
 public class AuthentificationPage {
     WebDriver driver;
 
+    @FindBy(css = "#site-logo")
+    WebElement logo;
+
     @FindBy(css = ".u-column1")
     public WebElement paveLogin;
 
@@ -21,6 +24,9 @@ public class AuthentificationPage {
 
     @FindBy(css = "form > p:nth-child(3) > input.woocommerce-Button")
     public WebElement loginButton;
+
+    @FindBy(css = "p.woocomerce-FormRow.form-row > input.woocommerce-Button.button")
+    public WebElement RegisterButton;
 
     @FindBy(tagName = "body")
     public WebElement body;
