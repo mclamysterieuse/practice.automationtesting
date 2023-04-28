@@ -5,7 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ShopPage {
+public class CheckoutPage {
+
     WebDriver driver;
     @FindBy(css = "#site-logo > a > img")
     private WebElement logoIcon;
@@ -13,9 +14,13 @@ public class ShopPage {
     @FindBy(css = "#wpmenucartli > a > i")
     private WebElement basketIcon;
 
-    public ShopPage(WebDriver driver) {
+    @FindBy(css = "p.woocommerce-thankyou-order-received")
+    private WebElement orderMessage ;
+
+    public CheckoutPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
 
 }
