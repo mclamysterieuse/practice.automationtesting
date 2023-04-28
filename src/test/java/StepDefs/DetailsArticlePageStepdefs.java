@@ -1,2 +1,4 @@
-package StepDefs;public class DetailsArticlePageStepdefs {
+package StepDefs;
+
+public class DetailsArticlePageStepdefs {
 }
