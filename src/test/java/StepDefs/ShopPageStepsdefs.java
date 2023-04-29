@@ -9,6 +9,7 @@ import pagesObjectModel.ShopPage;
 public class ShopPageStepsdefs {
 
     ShopPage shopPage = new ShopPage(Hooks.driver);
+
     @When("Je clique sur le bouton {string}")
     public void jeCliqueSurLeBouton(String arg0) {
         shopPage.cliquequerSurShop();

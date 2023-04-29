@@ -8,18 +8,47 @@ import org.openqa.selenium.support.PageFactory;
 public class CheckoutPage {
 
     WebDriver driver;
-    @FindBy(css = "#site-logo > a > img")
-    private WebElement logoIcon;
 
-    @FindBy(css = "#wpmenucartli > a > i")
-    private WebElement basketIcon;
+    @FindBy(css = "#site-logo")
+    public WebElement logo;
 
-    @FindBy(css = "p.woocommerce-thankyou-order-received")
-    private WebElement orderMessage ;
+    @FindBy(css = ".wpmenucartli > a")
+    public WebElement basketLink;
+
+    @FindBy(css = ".checkout-button")
+    public WebElement checkoutLink;
+
+    @FindBy(css = "#place_order")
+    public WebElement placeOrderLink;
+
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public boolean checkVisibilityBasketLink() {
+        return basketLink.isDisplayed();
+    }
+
+    public boolean checkVisibilityLogo() {
+        return logo.isDisplayed();
+    }
+
+    public void clickBasketLink() {
+        basketLink.click();
+    }
+
+    public void clickLogo() {
+        logo.click();
+    }
+
+    public void clickCheckout() {
+        checkoutLink.click();
+    }
+
+    public boolean checkVisibilityOfPlaceOrder() {
+        return placeOrderLink.isDisplayed();
     }
 
 

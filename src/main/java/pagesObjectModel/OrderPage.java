@@ -8,11 +8,13 @@ import org.openqa.selenium.support.PageFactory;
 public class OrderPage {
 
     WebDriver driver;
-    @FindBy(css = "#site-logo > a > img")
-    private WebElement logoIcon;
 
-    @FindBy(css = "#wpmenucartli > a > i")
-    private WebElement basketIcon;
+    @FindBy(css = "#site-logo")
+    public WebElement logo;
+
+    @FindBy(css = ".wpmenucartli > a")
+    public WebElement basketLink;
+
     @FindBy(css = ".button.view")
     private WebElement viewButton;
 
@@ -20,10 +22,25 @@ public class OrderPage {
     private WebElement orderView;
 
 
-
     public OrderPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public boolean checkVisibilityBasketLink() {
+        return basketLink.isDisplayed();
+    }
+
+    public boolean checkVisibilityLogo() {
+        return logo.isDisplayed();
+    }
+
+    public void clickBasketLink() {
+        basketLink.click();
+    }
+
+    public void clickLogo() {
+        logo.click();
     }
 
 }

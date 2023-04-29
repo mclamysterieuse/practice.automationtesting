@@ -21,10 +21,11 @@ public class AddressPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void verifierLaPresenceDuLogo(){
+    public void verifierLaPresenceDuLogo() {
         logoIcon.isDisplayed();
     }
-    public void cliquequerSurAddresses(){
+
+    public void cliquequerSurAddresses() {
         addresseLink.click();
     }
 }

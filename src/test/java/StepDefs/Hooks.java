@@ -21,7 +21,7 @@ public class Hooks {
     public static void openBrowser() throws MalformedURLException {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--disable-popup-blocking");
         driver = new ChromeDriver(options);
         //driver = new RemoteWebDriver(new URL( "http://192.168.56.1:4444/wd/hub"), options);
         driver.manage().window().maximize();
