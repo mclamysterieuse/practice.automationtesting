@@ -11,8 +11,10 @@ public class AddressPage {
 
     @FindBy(css = "#site-logo > a > img")
     private WebElement logoIcon;
+
     @FindBy(css = "#wpmenucartli > a > i")
     private WebElement basketIcon;
+
     @FindBy(css = "div.woocommerce > div > p")
     private WebElement message;
 
