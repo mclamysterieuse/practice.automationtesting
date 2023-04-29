@@ -8,16 +8,32 @@ import org.openqa.selenium.support.PageFactory;
 public class OrderReceivePage {
 
     WebDriver driver;
-    @FindBy(css = "#site-logo > a > img")
-    private WebElement logoIcon;
-    @FindBy(css = ".button.view")
-    private WebElement viewButton;
-    @FindBy(css = "div.woocommerce > div > h2")
-    private WebElement orderDetailsView;
 
+    @FindBy(css = ".wpmenucartli > a")
+    public WebElement basketLink;
+
+    @FindBy(css = "#site-logo")
+    public WebElement logo;
 
     public OrderReceivePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    public boolean checkVisibilityBasketLink() {
+        return basketLink.isDisplayed();
+    }
+
+    public boolean checkVisibilityLogo() {
+        return logo.isDisplayed();
+    }
+
+    public void clickBasketLink() {
+        basketLink.click();
+    }
+
+    public void clickLogo() {
+        logo.click();
+    }
+
 }

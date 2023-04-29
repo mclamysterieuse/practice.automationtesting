@@ -6,8 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ShopPage {
-    @FindBy(css = "#site-logo > a > img")
-    private WebElement logoIcon;
+    @FindBy(css = "#site-logo")
+    private WebElement logo;
+
+    @FindBy(css = ".wpmenucartli > a")
+    public WebElement basketLink;
     @FindBy (css = "#menu-item-40 > a")
     private WebElement shopLink;
     @FindBy (css = "a.button.product_type_simple.add_to_cart_button.ajax_add_to_cart")
@@ -25,7 +28,7 @@ public class ShopPage {
     }
 
     public void verifierLaPresenceDuLogo(){
-        logoIcon.isDisplayed();
+        logo.isDisplayed();
     }
 
     public void cliquequerSurShop(){
@@ -34,14 +37,28 @@ public class ShopPage {
     public void cliquequerSurAddToBasket(){
         addToBasket.click();
     }
-    public void verifierQueAddToBasketEstVisible(){
-        addToBasket.isDisplayed();
+    public boolean verifierQueAddToBasketEstVisible(){
+        return addToBasket.isDisplayed();
     }
-    public void verifierQueReadMoreEstVisible(){
-        readMore.isDisplayed();
+    public boolean verifierQueReadMoreEstVisible(){
+        return readMore.isDisplayed();
     }
-    public void verifierQueViewBasketEstVisible(){
-        viewBasket.isDisplayed();
+    public boolean verifierQueViewBasketEstVisible(){ return viewBasket.isDisplayed();
+    }
+    public boolean checkVisibilityBasketLink(){
+        return basketLink.isDisplayed();
+    }
+
+    public boolean checkVisibilityLogo(){
+        return logo.isDisplayed();
+    }
+
+    public void clickBasketLink(){
+        basketLink.click();
+    }
+
+    public void clickLogo(){
+        logo.click();
     }
 
 }

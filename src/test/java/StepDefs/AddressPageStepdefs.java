@@ -7,6 +7,7 @@ import pagesObjectModel.AddressPage;
 public class AddressPageStepdefs {
 
     AddressPage addressPage = new AddressPage(Hooks.driver);
+
     @And("Je me redirige vers le site {string}  de la page Adresse")
     public void jeMeRedirigeVersLeSiteDeLaPageAdresse(String lien) {
         Hooks.driver.get(lien);

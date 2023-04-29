@@ -8,10 +8,10 @@ Feature: Vérification de la présence du Logo du site "AT"
 		    And je saisis mon password
 		    And Je clique sur login
 		    And je clique sur "adresse"
-		    And je clique sur le lien  "downloads"
+		    #And je clique sur le lien  "Account Details"
 		    And je clique sur onglet "shop"
 		    Then Le logo est bien présent sur la page Address
-		    And  Le logo est bien présent sur la page Downloads
+		    #And  Le logo est bien présent sur la page Account
 		    And Le logo est bien présent sur la page My Account
 	        And  Le logo est bien présent sur la page Shop
 

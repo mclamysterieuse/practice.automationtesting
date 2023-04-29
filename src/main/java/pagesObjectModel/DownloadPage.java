@@ -13,14 +13,15 @@ public class DownloadPage {
     private WebElement downloadLink;
 
 
-public DownloadPage(WebDriver driver) {
-    PageFactory.initElements(driver, this);
-}
-    public void verifierLaPresenceDuLogo(){
-        logoIcon.isDisplayed();
+    public DownloadPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
     }
 
-    public void cliquequerSurDownloads(){
+    public boolean verifierLaPresenceDuLogo() {
+        return logoIcon.isDisplayed();
+    }
+
+    public void cliquequerSurDownloads() {
         downloadLink.click();
     }
 
