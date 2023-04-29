@@ -11,13 +11,20 @@ public class AddressPage {
 
     @FindBy(css = "#site-logo > a > img")
     private WebElement logoIcon;
-    @FindBy(css = "#wpmenucartli > a > i")
-    private WebElement basketIcon;
     @FindBy(css = "div.woocommerce > div > p")
     private WebElement message;
 
+    @FindBy(css = "li.woocommerce-MyAccount-navigation-link.woocommerce-MyAccount-navigation-link--edit-address > a")
+    private WebElement addresseLink;
+
     public AddressPage(WebDriver driver) {
-        this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public void verifierLaPresenceDuLogo(){
+        logoIcon.isDisplayed();
+    }
+    public void cliquequerSurAddresses(){
+        addresseLink.click();
     }
 }
