@@ -7,12 +7,13 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AddressPage {
 
-    WebDriver driver;
+   public  WebDriver driver;
 
-    @FindBy(css = "#site-logo > a > img")
-    private WebElement logoIcon;
-    @FindBy(css = "div.woocommerce > div > p")
-    private WebElement message;
+    @FindBy(css = ".wpmenucartli > a")
+    public WebElement basketLink;
+
+    @FindBy(css = "#site-logo")
+    public WebElement logo;
 
     @FindBy(css = "li.woocommerce-MyAccount-navigation-link.woocommerce-MyAccount-navigation-link--edit-address > a")
     private WebElement addresseLink;
@@ -21,11 +22,15 @@ public class AddressPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void verifierLaPresenceDuLogo() {
-        logoIcon.isDisplayed();
+    public boolean  checkVisibilityLogo() {
+       return logo.isDisplayed();
     }
 
-    public void cliquequerSurAddresses() {
+    public boolean  checkVisibilityBasket() {
+        return basketLink.isDisplayed();
+    }
+
+    public void cliquerSurAddresses() {
         addresseLink.click();
     }
 }

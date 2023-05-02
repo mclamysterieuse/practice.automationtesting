@@ -5,32 +5,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class OrderPage {
+public class LogoutPage {
 
-    WebDriver driver;
+    public WebDriver driver;
 
-    @FindBy(css = "#site-logo")
-    public WebElement logo;
+    public LogoutPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+    }
 
     @FindBy(css = ".wpmenucartli > a")
     public WebElement basketLink;
 
-    @FindBy(css = ".button.view")
-    private WebElement viewButton;
+    @FindBy(css = "#site-logo")
+    public WebElement logo;
 
-    @FindBy(css = "th.order-number > span")
-    private WebElement orderView;
+    @FindBy (css = ".woocommerce-MyAccount-navigation-link--customer-logout > a" )
+    public WebElement logoutLink;
 
-    @FindBy(css = ".woocommerce-MyAccount-navigation-link--orders > a")
-    private WebElement orderLink;
-
-
-
-    public OrderPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public void cliquerSurLogout() {
+        logoutLink.click();
     }
-
+    
     public boolean checkVisibilityBasketLink() {
         return basketLink.isDisplayed();
     }
@@ -46,9 +42,4 @@ public class OrderPage {
     public void clickLogo() {
         logo.click();
     }
-
-    public void clickOrderLink() {
-        orderLink.click();
-    }
-
 }

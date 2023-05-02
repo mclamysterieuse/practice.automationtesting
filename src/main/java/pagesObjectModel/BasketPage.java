@@ -1,15 +1,21 @@
 package pagesObjectModel;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BasketPage {
 
-    WebDriver driver;
+    public WebDriver driver;
     @FindBy(css = ".wpmenucartli > a")
     public WebElement basketLink;
 
@@ -29,14 +35,17 @@ public class BasketPage {
     @FindBy(css = "td.product-subtotal")
     WebElement articleTotalPrice;
 
-    @FindBy(css = "td.product-remove")
+    @FindBy(css = "a[class=remove]")
     WebElement deleteButton;
 
-    @FindBy(css = ".coupon_code")
+    @FindBy(css = "input[name = coupon_code]")
     WebElement couponCodeField;
 
     @FindBy(css = "div.coupon > .button")
     WebElement applyCodeButton;
+
+    @FindBy(css = "p[class=cart-empty]")
+    WebElement emptyMessage;
 
     //prix total de tout le panier
     @FindBy(css = "tr.cart-subtotal > td >.amount")
@@ -51,7 +60,28 @@ public class BasketPage {
 
     By quantityBy = By.cssSelector(".quantity");
 
+    @FindBy(css = ".wc-forward")
+    WebElement viewBasketButton;
+
+    @FindBy (tagName = "html")
+    private WebElement tagHtmlSelector;
+
+    @FindBy (css = " td.product-thumbnail > a")
+    private WebElement imageSelector;
+    @FindBy (css = "div.woocommerce > form")
+    private WebElement basketSelector;
+    By basketselector = By.cssSelector("div.woocommerce > form");
+    By basketBy = By.cssSelector(".quantity");
+    @FindBy (css = "td.product-name > a")
+    private WebElement libelleSelector;
+
+    @FindBy (css = "td.product-price > span")
+    private WebElement priceSelector;
+
+
+
     public BasketPage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -80,9 +110,26 @@ public class BasketPage {
         return deleteButton.isDisplayed();
     }
 
-    public void verifierQueLePanierLinkEstCliquable() {
-        basketLink.click();
+    public boolean verifierQueNoussommesDansLaPagePanier() {
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Actions action =  new Actions(driver);
+        action.moveToElement(tagHtmlSelector);
+        action.moveByOffset(-400, 0).click().build().perform();
+
+        return basketSelector.isDisplayed();
     }
+    public boolean verifierQueLeLibelleEstPresent() {
+        return libelleSelector.isDisplayed();
+    }
+    public boolean verifierQueLePrixEstPresent() {
+        return priceSelector.isDisplayed();
+    }
+
 
     public boolean verifierQueSummaryBasketIsVisible() {
         return summaryBasket.isDisplayed();
@@ -108,6 +155,10 @@ public class BasketPage {
         return logo.isDisplayed();
     }
 
+    public boolean verifierQueImageEStVisible() {
+        return imageSelector.isDisplayed();
+    }
+
     public void clickBasketLink() {
         basketLink.click();
     }
@@ -126,4 +177,55 @@ public class BasketPage {
         dropdownQuantity.selectByIndex(newQuantity);
         return this;
     }
+
+    public boolean verifierQueLaQuantiteEstVisible() {
+        return quantity.isDisplayed();
+    }
+    public void jeCliqueSurViewbasket() {
+        viewBasketButton.click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Actions action =  new Actions(driver);
+        action.moveToElement(tagHtmlSelector);
+        action.moveByOffset(-400, 0).click().build().perform();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public boolean verifierQueLeMessageDeSuppressionEstVisible() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return emptyMessage.isDisplayed();
+    }
+    public void suppressionArticle() {
+         deleteButton.click();
+        Actions action =  new Actions(driver);
+        action.moveToElement(tagHtmlSelector);
+        // Click at an offset of 400px to the left of the element
+        action.moveByOffset(-400, 0).click().build().perform();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void updateQuantity() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        quantity.click();
+    }
+
+
 }
