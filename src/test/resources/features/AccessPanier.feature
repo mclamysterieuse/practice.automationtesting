@@ -14,8 +14,6 @@ Feature: AccessPanier
     Then je me redirige vers le panier
     And  Chaque article contient une photo descriptive, un libellé et le prix affiché au-dessous
 
-
-
   @TEST_POEI23P2G4-78 @TESTSET_POEI23P2G4-89 @TNR
   Scenario: Valider la présence du bouton "ADD TO BASKET" dans la page Shop
     Given Je me trouve sur la page Shop via le lien "https://practice.automationtesting.in/shop/"
@@ -32,21 +30,19 @@ Feature: AccessPanier
     And un détail déscriptif est present
     And le prix est present
     And le nombre d'exemplaires dispo est présent
-#
-#
+
   @TEST_POEI23P2G4-54 @TESTSET_POEI23P2G4-89 @TNR
   Scenario: Vérifié la possibilité d'ajouter un article au panier avec quantité
     Given je me redirige vers la page Detail de l'article via le lien "https://practice.automationtesting.in/product/mastering-javascript/"
     Then le bouton ADD TO BASKET est present
     And le champ pour le nombre d'exemplaire est present
-#
-#
+
   @TEST_POEI23P2G4-58 @TESTSET_POEI23P2G4-89 @TNR
   Scenario: Valider l'ajout d'article au panier
     Given je me redirige vers la page Detail de l'article via le lien "https://practice.automationtesting.in/product/mastering-javascript/"
-    When je choisie la quantité d'exemplaire
+    When je choisi la quantité d'exemplaire
     And je clique sur le bouton "ADD TO BASKET"
-    Then le message "has been added to your basket" est affiché
+    Then le message "has been added to your basket" se affiche
     And le bouton "VIEW BASKET" est affiché au dessus de  article et redirige vers espace panier
 #
   @TEST_POEI23P2G4-53 @TESTSET_POEI23P2G4-89 @TNR

@@ -1,3 +1,4 @@
+
 import StepDefs.ImportResultToXray;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -9,10 +10,11 @@ import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 
+
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        //tags = {"@TEST_POEI23P2G4-60"},
-        features = "src/test/resources/features/",
+        //tags = {"@TEST_POEI23P2G4-75 "},
+        features = "src/test/resources/features/GestionCompteClient.feature",
         glue = "",
         plugin = { "pretty", "html:target/cucumber-reports","json:target/cucumber.json" }
 )
@@ -25,4 +27,3 @@ public class TestRunner {
 
     }
 }
-

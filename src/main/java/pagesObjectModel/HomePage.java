@@ -15,15 +15,6 @@ public class HomePage {
     @FindBy(css = "#site-logo")
     public WebElement logo;
 
-    @FindBy(css = "#n2-ss-6-align")
-    WebElement slide;
-
-    @FindBy(css = ".add_to_cart_button")
-    WebElement addToBasketButton;
-
-    @FindBy(css = ".woocommerce-LoopProduct-link")
-    WebElement articleCards;
-
     @FindBy(css = "div.n2-ss-slide-background")
     WebElement homePageSelector;
 

@@ -1,5 +1,6 @@
 Feature: Connexion/Deconnexion
 
+
   @TEST_POEI23P2G4-33 @TESTSET_POEI23P2G4-87 @TNR
   Scenario Outline: Connexion OK
     Given je me redirige vers la page My Account
@@ -12,7 +13,7 @@ Feature: Connexion/Deconnexion
 
     Examples:
       |login                  |password    |
-      |boudouhomar00@gmail.com|Moijesuis2* |
+      |client@gmail.com|Bon_password00 |
 
   @TEST_POEI23P2G4-35 @TESTSET_POEI23P2G4-87 @TNR
   Scenario Outline: Connexion KO
@@ -27,7 +28,7 @@ Feature: Connexion/Deconnexion
 
     Examples:
       |login                   |password          |message|
-      |boudouhomar00@gmail.com |mauvais_password  |Error: the password you entered for the username boudouhomar00@gmail.com is incorrect. Lost your password?|
+      |client@gmail.com |mauvais_password  |Error: the password you entered for the username client@gmail.com is incorrect. Lost your password?|
 
   @TEST_POEI23P2G4-36  @TESTSET_POEI23P2G4-87 @TNR
   Scenario Outline: Affichage du Dashboard après connexion
@@ -47,7 +48,7 @@ Feature: Connexion/Deconnexion
 
     Examples:
       |login                  |password    |
-      |boudouhomar00@gmail.com|Moijesuis2* |
+      |client@gmail.com|Bon_password00 |
 
   @TEST_POEI23P2G4-38 @TESTSET_POEI23P2G4-87 @TNR
   Scenario Outline: Vérifier que la Case "Remember me" est coché pour prochaine connexion
@@ -57,12 +58,11 @@ Feature: Connexion/Deconnexion
     And je coche sur la case Remember me
     And je clique sur le bouton Login
     And je me deconnecte
-    And je me redirige vers la page My Account
     Then le champ login est pré-rempli par le login "<login>"
 
     Examples:
       |login                  |password    |
-      |boudouhomar00@gmail.com|Boudou@00   |
+      |client@gmail.com|Bon_password00 |
 
   @TEST_POEI23P2G4-39 @TESTSET_POEI23P2G4-87 @TNR
   Scenario Outline: Valider la présence du lien "Logout" dans l'espace "My Account"
@@ -72,11 +72,11 @@ Feature: Connexion/Deconnexion
     And je saisis mon password "<password>"
     And je clique sur le bouton Login
 
-    Then lien "Logout" est présent
+    Then le lien Logout est présent
 
     Examples:
       |login                  |password    |
-      |boudouhomar00@gmail.com|Moijesuis2* |
+      |client@gmail.com|Bon_password00 |
 
   @TEST_POEI23P2G4-45 @TESTSET_POEI23P2G4-87 @TNR
   Scenario: Valider la présence du Pavé "Login"
@@ -89,7 +89,15 @@ Feature: Connexion/Deconnexion
     Then le pavé Register est présent dans l'espace My Account
 
   @TEST_POEI23P2G4-40 @TESTSET_POEI23P2G4-87 @TNR
-  Scenario: Valider que le lien "Logout" me permet de me déconnecter
+  Scenario Outline: Valider que le lien "Logout" me permet de me déconnecter
     Given je me redirige vers la page My Account
+    And le pavé Login est affiché
+    When je saisis mon login "<login>"
+    And je saisis mon password "<password>"
+    And je clique sur le bouton Login
     When Je clique sur le lien Logout
     Then Je suis déconneté
+
+    Examples:
+      |login                  |password |
+      |client@gmail.com|Bon_password00 |
