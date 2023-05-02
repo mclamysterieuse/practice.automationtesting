@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class MyAccountPage {
 
-    public  WebDriver driver;
+    public WebDriver driver;
 
     @FindBy(css = ".wpmenucartli > a")
     public WebElement basketLink;
@@ -57,15 +57,88 @@ public class MyAccountPage {
     @FindBy(tagName = "html")
     public WebElement html;
 
+
+    @FindBy(css = "input#username")
+    public WebElement usernameTextBox;
+
+    @FindBy(css = "input#password")
+    public WebElement passwordTextBox;
+
+    @FindBy(css = "input.woocommerce-Button[name=login]")
+    public WebElement loginButton;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public MyAccountPage(WebDriver driver) {
-
-
-    @FindBy (tagName = "html")
-    private WebElement tagHtmlSelector;
-
-
-    public MyAccountPage(WebDriver driver) {
->>>>>>> 55e1ef94e88a130c74d3b00486a36d214d7d2c46
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -82,14 +155,26 @@ public class MyAccountPage {
         basketLink.click();
     }
 
+    public void entrerMonUsername(String username) {
+        usernameTextBox.sendKeys(username);
+    }
+
+    public void entrerMonPassword(String password) {
+        passwordTextBox.sendKeys(password);
+    }
+
+    public void cliquerSurLogin() {
+        loginButton.click();
+    }
+
     public void clickLogo() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        Actions action =  new Actions(driver);
-        action.moveToElement(tagHtmlSelector);
+        Actions action = new Actions(driver);
+        action.moveToElement(html);
         action.moveByOffset(-400, 0).click().build().perform();
         logo.click();
         try {
@@ -97,7 +182,7 @@ public class MyAccountPage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        action.moveToElement(tagHtmlSelector);
+        action.moveToElement(html);
         action.moveByOffset(-400, 0).click().build().perform();
         try {
             Thread.sleep(3000);
@@ -105,8 +190,7 @@ public class MyAccountPage {
             throw new RuntimeException(e);
         }
     }
-
-    public void clickAccountDetailLink(){
+    public void clickAccountDetailLink () {
 
         accountLink.click();
         Actions actions = new Actions(driver);
@@ -120,5 +204,5 @@ public class MyAccountPage {
         }
 
     }
-
 }
+

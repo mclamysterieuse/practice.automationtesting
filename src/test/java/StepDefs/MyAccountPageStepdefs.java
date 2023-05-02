@@ -38,7 +38,7 @@ public class MyAccountPageStepdefs {
     Assert.assertTrue(myAccountPage.ordersLink.isDisplayed());
   }
 
-<<<<<<< HEAD
+
   @And("le lien Download est présent")
   public void leLienDownloadEstPrésent() {
     Assert.assertTrue(myAccountPage.downloadsLink.isDisplayed());
@@ -97,7 +97,6 @@ public class MyAccountPageStepdefs {
         Assert.assertEquals("Le changement de mot de passe ne s'est pas éfféctué",message,myAccountPage.message.getText());
     }
 
-=======
   @And("le basket link est present sur la page My Account")
   public boolean leBasketLinkEstPresentSurLaPageMyAccount() {
     return myAccountPage.checkVisibilityBasketLink();
@@ -107,5 +106,20 @@ public class MyAccountPageStepdefs {
     public void jeCliqueSurLeLogo() {
     myAccountPage.clickLogo();
     }
->>>>>>> 55e1ef94e88a130c74d3b00486a36d214d7d2c46
+
+  @When("Je saisis mon username")
+  public void jeSaisisMonUsername() {
+    myAccountPage.entrerMonUsername("christine.alega@aims-cameroon.org");
+
+  }
+
+  @And("je saisis mon password")
+  public void jeSaisisMonPassword() {
+    myAccountPage.entrerMonPassword("Devalon@1991");
+  }
+
+  @And("Je clique sur login")
+  public void jeCliqueSurLogin() {
+    myAccountPage.cliquerSurLogin();
+  }
 }

@@ -9,40 +9,25 @@ import pagesObjectModel.BasketPage;
 public class BasketPageStepdefs {
     BasketPage basketPage = new BasketPage(Hooks.driver);
 
-
-<<<<<<< HEAD
     @And("Je clique sur le lien Lost you Password ?")
     public void jeCliqueSurLeLien(String arg0) {
     }
 
-    @Then("je me redirige vers le panier")
-    public void jeMeRedirigeVersLePanier() {
 
-    }
-
-    @And("Un filtre permet d affiner la vue des articles par prix")
-    public void unFiltrePermetDAffinerLaVueDesArticlesParPrix() {
-
-    }
-
-    @And("Un filtre permet d affiner la vue des articles par thème")
-    public void unFiltrePermetDAffinerLaVueDesArticlesParThème() {
-=======
     @Given("La page panier affiche un récapitulatif des articles ajoutés et les informations {string}")
     public void laPagePanierAfficheUnRécapitulatifDesArticlesAjoutésEtLesInformations(String arg0) {
         basketPage.verifierQueLePrixTotalEstVisible();
         basketPage.verifierQueLeChampsTaxEstVisible();
         basketPage.verifierQueLePrixTotalApresTaxeIsVisible();
->>>>>>> 55e1ef94e88a130c74d3b00486a36d214d7d2c46
 
     }
+
 
     @And("Chaque article contient une photo descriptive, un libellé et le prix affiché au-dessous")
     public void chaqueArticleContientUnePhotoDescriptiveUnLibelléEtLePrixAffichéAuDessous() {
         basketPage.verifierQueLeLibelleEstPresent();
         basketPage.verifierQueLePrixEstPresent();
         basketPage.verifierQueImageEStVisible();
-
     }
 
 
@@ -75,39 +60,6 @@ public class BasketPageStepdefs {
         basketPage.updateQuantity();
     }
 
-    @Then("Je valide que la page panier affiche un récapitulatif des articles ajoutés spécifiant la quantité, le prix unitaire et le prix total")
-    public void jeValideQueLaPagePanierAfficheUnRécapitulatifDesArticlesAjoutésSpécifiantLaQuantitéLePrixUnitaireEtLePrixTotal() {
-<<<<<<< HEAD
-
-    }
-
-    @When("je choisie la quantité d'exemplaire")
-    public void jeChoisieLaQuantitéDExemplaire() {
-    }
-
-    @Given("un article se trouve dans la page panier")
-    public void unArticleSeTrouveDansLaPagePanier() {
-
-    }
-
-
-=======
-        basketPage.verifierQueLePrixTotalEstVisible();
-        basketPage.verifierQueLePrixDeLarticleEstVisible();
-        basketPage.verifierQueLaQuantiteEstVisible();
-
-    }
->>>>>>> 55e1ef94e88a130c74d3b00486a36d214d7d2c46
-
-    @And("le bouton {string} est affiché au dessus de  article et redirige vers espace panier")
-    public void leBoutonEstAffichéAuDessusDeArticleEtRedirigeVersEspacePanier(String arg0) {
-    }
-
-    @And("je clique sur  bouton {string}")
-    public void jeCliqueSurBouton(String arg0) {
-        basketPage.jeCliqueSurViewbasket();
-
-    }
 
     @And("le basket link est present sur la page panier")
     public boolean leBasketLinkEstPresentSurLaPagePanier() {
@@ -129,4 +81,33 @@ public class BasketPageStepdefs {
     public void jeMeRedirigeVersLePanier() {
         basketPage.verifierQueNoussommesDansLaPagePanier();
     }
+
+    @When("je choisi la quantité d'exemplaire")
+    public void jeChoisieLaQuantitéDExemplaire() {
+    }
+
+    @Given("un article se trouve dans la page panier")
+    public void unArticleSeTrouveDansLaPagePanier() {
+
+    }
+
+    @Then("Je valide que la page panier affiche un récapitulatif des articles ajoutés spécifiant la quantité, le prix unitaire et le prix total")
+    public void jeValideQueLaPagePanierAfficheUnRécapitulatifDesArticlesAjoutésSpécifiantLaQuantitéLePrixUnitaireEtLePrixTotal() {
+        basketPage.verifierQueLePrixTotalEstVisible();
+        basketPage.verifierQueLePrixDeLarticleEstVisible();
+        basketPage.verifierQueLaQuantiteEstVisible();
+
+    }
+
+    @And("le bouton {string} est affiché au dessus de  article et redirige vers espace panier")
+    public void leBoutonEstAffichéAuDessusDeArticleEtRedirigeVersEspacePanier(String arg0) {
+    }
+
+    @And("je clique sur  bouton {string}")
+    public void jeCliqueSurBouton(String arg0) {
+        basketPage.jeCliqueSurViewbasket();
+
+    }
+
 }
+

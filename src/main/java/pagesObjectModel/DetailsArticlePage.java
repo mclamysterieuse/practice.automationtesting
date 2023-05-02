@@ -43,9 +43,6 @@ public class DetailsArticlePage {
     @FindBy(css = ".wc-forward")
     WebElement viewBasketButton;
 
-    @FindBy(css = "td.product-name > a")
-    private WebElement detailArticleView;
-
     By quantityBy = By.cssSelector(".quantity");
 
     @FindBy(css = " input[title=\"Qty\"]")
@@ -61,7 +58,7 @@ public class DetailsArticlePage {
 
 
     public boolean verifierNombreArticlevouluEst() {
-      return  quantityField.isDisplayed();
+        return  quantityField.isDisplayed();
     }
 
     public boolean verifierQueLestockDesArticlesEstVisible() {
@@ -73,7 +70,7 @@ public class DetailsArticlePage {
     }
 
     public void cliquerSurAddToCart() {
-         addToCartButton.click();
+        addToCartButton.click();
     }
 
     public boolean verifierQueLeMessageEstPresent() {

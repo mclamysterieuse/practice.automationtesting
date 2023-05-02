@@ -70,8 +70,6 @@ public class BasketPage {
     private WebElement imageSelector;
     @FindBy (css = "div.woocommerce > form")
     private WebElement basketSelector;
-    By basketselector = By.cssSelector("div.woocommerce > form");
-    By basketBy = By.cssSelector(".quantity");
     @FindBy (css = "td.product-name > a")
     private WebElement libelleSelector;
 

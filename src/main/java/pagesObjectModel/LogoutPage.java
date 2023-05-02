@@ -9,11 +9,6 @@ public class LogoutPage {
 
     public WebDriver driver;
 
-    public LogoutPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
-
     @FindBy(css = ".wpmenucartli > a")
     public WebElement basketLink;
 
@@ -22,6 +17,12 @@ public class LogoutPage {
 
     @FindBy (css = ".woocommerce-MyAccount-navigation-link--customer-logout > a" )
     public WebElement logoutLink;
+
+    public LogoutPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+    }
+
 
     public void cliquerSurLogout() {
         logoutLink.click();

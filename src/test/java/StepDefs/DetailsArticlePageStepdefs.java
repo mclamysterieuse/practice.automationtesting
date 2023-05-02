@@ -72,16 +72,14 @@ public class DetailsArticlePageStepdefs {
 
     }
 
-    @Then("le message {string} est affiché")
-    public boolean leMessageEstAffiché(String arg0) {
-        return detailsArticlePage.verifierQueLeMessageEstPresent();
-
-    }
-
     @When("je choisie la quantité d'exemplaire")
     public void jeChoisieLaQuantitéDExemplaire() {
         detailsArticlePage.updateQuantity();
     }
 
+    @Then("le message {string} se affiche")
+    public boolean leMessageSeAffiche(String arg0) {
+        return detailsArticlePage.verifierQueLeMessageEstPresent();
+    }
 }
 
