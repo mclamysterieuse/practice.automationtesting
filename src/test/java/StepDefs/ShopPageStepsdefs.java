@@ -12,45 +12,71 @@ public class ShopPageStepsdefs {
 
     @When("Je clique sur le bouton {string}")
     public void jeCliqueSurLeBouton(String arg0) {
-        shopPage.cliquequerSurShop();
+        shopPage.cliquerSurAddToBasket();
 
     }
 
     @And("Je valide apparition du lien  {string} au-dessous article, si article n'est pas en stock")
-    public void jeValideApparitionDuLienAuDessousArticleSiArticleNEstPasEnStock(String arg0) {
-
+    public boolean jeValideApparitionDuLienAuDessousArticleSiArticleNEstPasEnStock(String arg0) {
+        return shopPage.verifierQueReadMoreEstVisible();
     }
 
-    @And("Je valide  apparition du lien  {string} à la place du bouton {string}")
-    public void jeValideApparitionDuLienÀLaPlaceDuBouton(String arg0, String arg1) {
+    @When("Je valide  apparition du lien  {string} à la place du bouton {string}")
+    public boolean jeValideApparitionDuLienÀLaPlaceDuBouton(String arg0, String arg1) {
+        return shopPage.verifierQueViewBasketEstVisible();
 
-    }
-
-    @And("Je valide  apparition du lien  {string} a la place du bouton {string}")
-    public void jeValideApparitionDuLienALaPlaceDuBouton(String arg0, String arg1) {
     }
 
     @Then("je valide la présence de la liste des articles")
-    public void jeValideLaPrésenceDeLaListeDesArticles() {
+    public boolean jeValideLaPrésenceDeLaListeDesArticles() {
+        return shopPage.validerLapresenceListeArticle();
 
     }
 
     @And("Je valide la présence du  bouton  {string}")
-    public void jeValideLaPrésenceDuBouton(String arg0) {
-
+    public boolean jeValideLaPrésenceDuBouton(String arg0) {
+        return shopPage.verifierQueAddToBasketEstVisible();
     }
 
-    @Given("Je me trouve sur la page Shop via le lien {string}")
-    public void jeMeTrouveSurLaPageShopViaLeLien(String arg0) {
-    }
 
     @And("je clique sur onglet {string}")
     public void jeCliqueSurOnglet(String arg0) {
-
+        shopPage.cliquerSurShop();
     }
 
     @And("Le logo est bien présent sur la page Shop")
-    public void leLogoEstBienPrésentSurLaPageShop() {
-        shopPage.verifierLaPresenceDuLogo();
+    public boolean leLogoEstBienPrésentSurLaPageShop() {
+        return shopPage.checkVisibilityLogo();
     }
+
+    @And("le basket link est present sur la page shop")
+    public boolean leBasketLinkEstPresentSurLaPageShop() {
+        return shopPage.checkVisibilityBasketLink();
+    }
+
+    @And("Je valide  apparition du lien  {string} a la place du bouton {string}")
+    public boolean jeValideApparitionDuLienALaPlaceDuBouton(String arg0, String arg1) {
+        return shopPage.verifierQueReadMoreEstVisible();
+    }
+
+    @Given("Je me trouve sur la page Shop via le lien {string}")
+    public void jeMeTrouveSurLaPageShopViaLeLien(String lien) {
+        Hooks.driver.get(lien);
+    }
+
+    @And("Un filtre permet d affiner la vue des articles par prix")
+    public void unFiltrePermetDAffinerLaVueDesArticlesParPrix() {
+        shopPage.verifierQuePeuxAffinerArticlePrix();
+    }
+
+    @And("Un filtre permet d affiner la vue des articles par thème")
+    public void unFiltrePermetDAffinerLaVueDesArticlesParThème() {
+        shopPage.verifierQuePeuxAffinerArticleTheme();
+    }
+
+    @And("Je clique sur le lien {string}")
+    public void jeCliqueSurLeLien(String arg0) {
+        shopPage.cliquerSurViewBasket();
+    }
+
 }

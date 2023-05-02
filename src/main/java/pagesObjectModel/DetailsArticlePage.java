@@ -3,13 +3,14 @@ package pagesObjectModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class DetailsArticlePage {
 
-    public WebDriver driver;
+    public static WebDriver driver;
 
 
     @FindBy(css = ".wpmenucartli > a")
@@ -31,7 +32,7 @@ public class DetailsArticlePage {
     WebElement stock;
 
     @FindBy(css = ".single_add_to_cart_button")
-    WebElement addToBasketButton;
+    WebElement addToCartButton;
 
     @FindBy(css = ".quantity")
     WebElement quantityField;
@@ -47,13 +48,20 @@ public class DetailsArticlePage {
 
     By quantityBy = By.cssSelector(".quantity");
 
+    @FindBy(css = " input[title=\"Qty\"]")
+    private WebElement selectQuantity;
+
+
+
 
     public DetailsArticlePage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void cliquerSurDetailArticle() {
-        detailArticleView.click();
+
+    public boolean verifierNombreArticlevouluEst() {
+      return  quantityField.isDisplayed();
     }
 
     public boolean verifierQueLestockDesArticlesEstVisible() {
@@ -61,10 +69,20 @@ public class DetailsArticlePage {
     }
 
     public boolean verifierQueAddToBasketEstVisible() {
-        return addToBasketButton.isDisplayed();
+        return addToCartButton.isDisplayed();
+    }
+
+    public void cliquerSurAddToCart() {
+         addToCartButton.click();
     }
 
     public boolean verifierQueLeMessageEstPresent() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         return addedToBaksetMessage.isDisplayed();
     }
 
@@ -100,11 +118,13 @@ public class DetailsArticlePage {
         logo.click();
     }
 
-    public Object updateQuantity(int productIndex, int newQuantity) {
-        WebElement quantitySelectTag = driver.findElements(quantityBy).get(productIndex);
-        Select dropdownQuantity = new Select(quantitySelectTag);
-        dropdownQuantity.selectByIndex(newQuantity);
-        return this;
+    public void updateQuantity() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        selectQuantity.click();
     }
 
 }

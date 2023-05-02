@@ -18,8 +18,8 @@ public class MyAccountPageStepdefs {
   }
 
   @And("Le logo est bien présent sur la page My Account")
-  public void leLogoEstBienPrésentSurLaPageMyAccount() {
-    myAccountPage.checkVisibilityLogo();
+  public boolean leLogoEstBienPrésentSurLaPageMyAccount() {
+    return myAccountPage.checkVisibilityLogo();
   }
 
 
@@ -38,6 +38,7 @@ public class MyAccountPageStepdefs {
     Assert.assertTrue(myAccountPage.ordersLink.isDisplayed());
   }
 
+<<<<<<< HEAD
   @And("le lien Download est présent")
   public void leLienDownloadEstPrésent() {
     Assert.assertTrue(myAccountPage.downloadsLink.isDisplayed());
@@ -96,4 +97,15 @@ public class MyAccountPageStepdefs {
         Assert.assertEquals("Le changement de mot de passe ne s'est pas éfféctué",message,myAccountPage.message.getText());
     }
 
+=======
+  @And("le basket link est present sur la page My Account")
+  public boolean leBasketLinkEstPresentSurLaPageMyAccount() {
+    return myAccountPage.checkVisibilityBasketLink();
+  }
+
+    @And("je clique sur le logo")
+    public void jeCliqueSurLeLogo() {
+    myAccountPage.clickLogo();
+    }
+>>>>>>> 55e1ef94e88a130c74d3b00486a36d214d7d2c46
 }
