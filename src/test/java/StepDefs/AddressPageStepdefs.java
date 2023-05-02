@@ -14,13 +14,18 @@ public class AddressPageStepdefs {
     }
 
     @Then("Le logo est bien présent sur la page Address")
-    public void leLogoEstBienPrésentSurLaPageAddress() {
-        addressPage.verifierLaPresenceDuLogo();
+    public boolean leLogoEstBienPrésentSurLaPageAddress() {
+        return addressPage.checkVisibilityBasket();
 
     }
 
     @And("je clique sur {string}")
     public void jeCliqueSur(String arg0) {
-        addressPage.cliquequerSurAddresses();
+        addressPage.cliquerSurAddresses();
+    }
+
+    @And("le basket link est present sur la page Address")
+    public boolean leBasketLinkEstPresentSurLaPageAddress() {
+        return addressPage.checkVisibilityBasket();
     }
 }

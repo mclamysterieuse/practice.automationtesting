@@ -10,7 +10,8 @@ import java.security.NoSuchAlgorithmException;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/AccesLogo.feature",
+        tags = {"@TEST_POEI23P2G4-60"},
+        features = "src/test/resources/features",
         glue = "",
         plugin = { "pretty", "html:target/cucumber-reports","json:target/cucumber.json" }
 )

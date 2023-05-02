@@ -16,8 +16,8 @@ public class MyAccountPageStepdefs {
   }
 
   @And("Le logo est bien présent sur la page My Account")
-  public void leLogoEstBienPrésentSurLaPageMyAccount() {
-    myAccountPage.checkVisibilityLogo();
+  public boolean leLogoEstBienPrésentSurLaPageMyAccount() {
+    return myAccountPage.checkVisibilityLogo();
   }
 
   @When("Je saisis mon username")
@@ -35,4 +35,14 @@ public class MyAccountPageStepdefs {
   public void jeCliqueSurLogin() {
     myAccountPage.cliquerSurLogin();
   }
+
+  @And("le basket link est present sur la page My Account")
+  public boolean leBasketLinkEstPresentSurLaPageMyAccount() {
+    return myAccountPage.checkVisibilityBasketLink();
+  }
+
+    @And("je clique sur le logo")
+    public void jeCliqueSurLeLogo() {
+    myAccountPage.clickLogo();
+    }
 }

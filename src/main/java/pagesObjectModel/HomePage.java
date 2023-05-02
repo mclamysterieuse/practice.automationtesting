@@ -24,6 +24,9 @@ public class HomePage {
     @FindBy(css = ".woocommerce-LoopProduct-link")
     WebElement articleCards;
 
+    @FindBy(css = "div.n2-ss-slide-background")
+    WebElement homePageSelector;
+
 
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -43,6 +46,9 @@ public class HomePage {
     }
 
     public void clickLogo() {
-        logo.click();
+    }
+
+    public boolean verifierQueJesuissurlaHomePage() {
+        return homePageSelector.isDisplayed();
     }
 }

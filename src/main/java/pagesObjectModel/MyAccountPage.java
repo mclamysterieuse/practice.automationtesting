@@ -3,6 +3,7 @@ package pagesObjectModel;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -51,8 +52,12 @@ public class MyAccountPage {
     @FindBy(css = "input.woocommerce-Button[name=login]")
     public WebElement loginButton;
 
+    @FindBy (tagName = "html")
+    private WebElement tagHtmlSelector;
+
 
     public MyAccountPage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -82,7 +87,27 @@ public class MyAccountPage {
     }
 
     public void clickLogo() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Actions action =  new Actions(driver);
+        action.moveToElement(tagHtmlSelector);
+        action.moveByOffset(-400, 0).click().build().perform();
         logo.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        action.moveToElement(tagHtmlSelector);
+        action.moveByOffset(-400, 0).click().build().perform();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

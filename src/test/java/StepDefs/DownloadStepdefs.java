@@ -1,7 +1,6 @@
 package StepDefs;
 
 import cucumber.api.java.en.And;
-import org.openqa.selenium.Alert;
 import pagesObjectModel.DownloadPage;
 
 import static StepDefs.Hooks.driver;
@@ -13,12 +12,6 @@ public class DownloadStepdefs {
     @And("Je me redirige vers le site {string}  de la page Downloads")
     public void jeMeRedirigeVersLeSiteDeLaPageDownloads(String lien) {
 
-        if (driver.switchTo().alert() != null) {
-            Alert alert = driver.switchTo().alert();
-            String alertText = alert.getText();
-            alert.dismiss(); // alert.accept();
-        }
-
         driver.get(lien);
     }
 
@@ -29,7 +22,6 @@ public class DownloadStepdefs {
 
     @And("je clique sur le lien  {string}")
     public void jeCliqueSurLeLien(String arg0) {
-        driver.switchTo().alert().accept();
         downloadPage.cliquequerSurDownloads();
     }
 }
