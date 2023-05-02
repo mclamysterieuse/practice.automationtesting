@@ -13,7 +13,7 @@ Feature: AccessPanier
     And  Je clique sur le lien "View Basket"
     Then je me redirige vers le panier
     And  Chaque article contient une photo descriptive, un libellé et le prix affiché au-dessous
-#    And  Un lien actif sur ces éléments redirige vers le détail de l'article
+
 
 
   @TEST_POEI23P2G4-78 @TESTSET_POEI23P2G4-89 @TNR
