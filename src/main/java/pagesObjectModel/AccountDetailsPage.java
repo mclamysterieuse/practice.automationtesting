@@ -1,13 +1,22 @@
 package pagesObjectModel;
 
+
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.time.Duration;
 
 public class AccountDetailsPage {
 
     WebDriver driver;
+
+
+    @FindBy(tagName = "html")
+    public WebElement html;
 
     @FindBy(css = ".wpmenucartli > a")
     public WebElement basketLink;
@@ -29,6 +38,12 @@ public class AccountDetailsPage {
 
     @FindBy(css = ".woocommerce-error")
     public WebElement errorMessage;
+
+    @FindBy(css="#account_first_name")
+    public WebElement prenomField;
+
+    @FindBy(css="#account_last_name")
+    public WebElement nomField;
 
     public AccountDetailsPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -52,6 +67,7 @@ public class AccountDetailsPage {
     }
 
     public void setCurrentPassword(String password) {
+
         currentPassword.sendKeys(password);
     }
 
@@ -64,11 +80,26 @@ public class AccountDetailsPage {
     }
 
     public void clickSaveButton() {
+
+        Actions action =  new Actions(driver);
+        action.sendKeys(Keys.PAGE_DOWN).build().perform();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         saveButton.click();
     }
 
     public String getErrorMessage() {
         return errorMessage.getText();
+    }
+
+    public void setPrenom(String prenom){
+        prenomField.sendKeys(prenom);
+    }
+    public void setNom(String nom){
+        nomField.sendKeys(nom);
     }
 
 }

@@ -2,12 +2,19 @@ package pagesObjectModel;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.awt.*;
 
 public class AuthentificationPage {
 
     WebDriver driver;
+
+    @FindBy(tagName = "html")
+    public WebElement html;
+
     @FindBy(css = ".wpmenucartli > a")
     public WebElement basketLink;
 
@@ -36,7 +43,7 @@ public class AuthentificationPage {
     public WebElement loginButton;
 
 
-    @FindBy(css = "p.woocomerce-FormRow.form-row > input.woocommerce-Button.button")
+    @FindBy(name = "register")
     public WebElement registerButton;
 
 
@@ -51,10 +58,16 @@ public class AuthentificationPage {
     @FindBy(css = ".woocommerce-error > li")
     public WebElement errorMessageBlock;
 
+    @FindBy(tagName = "body")
+    public WebElement body;
 
     public AuthentificationPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public void accesAuthentificationPage(){
+        driver.get("https://practice.automationtesting.in/my-account/");
     }
 
     public boolean checkVisibilityBasketLink() {
@@ -102,6 +115,7 @@ public class AuthentificationPage {
     }
 
     public void clickRegisterButton() {
+
         registerButton.click();
     }
 

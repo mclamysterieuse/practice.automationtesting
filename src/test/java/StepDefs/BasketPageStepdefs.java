@@ -8,7 +8,7 @@ import cucumber.api.java.en.When;
 public class BasketPageStepdefs {
 
 
-    @And("Je clique sur le lien {string}")
+    @And("Je clique sur le lien Lost you Password ?")
     public void jeCliqueSurLeLien(String arg0) {
     }
 
@@ -91,15 +91,7 @@ public class BasketPageStepdefs {
 
     }
 
-    @And("je clique sur le bouton {string}")
-    public void jeCliqueSurLeBouton(String arg0) {
 
-    }
-
-    @Then("le message {string} est affiché")
-    public void leMessageEstAffiché(String arg0) {
-
-    }
 
     @And("le bouton {string} est affiché au dessus de  article et redirige vers espace panier")
     public void leBoutonEstAffichéAuDessusDeArticleEtRedirigeVersEspacePanier(String arg0) {

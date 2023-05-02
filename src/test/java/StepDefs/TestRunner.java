@@ -1,3 +1,5 @@
+package StepDefs;
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.AfterClass;
@@ -10,7 +12,8 @@ import java.security.NoSuchAlgorithmException;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/AccesLogo.feature",
+        tags = "@TESTSET_POEI23P2G4-90",
+        features = "src/test/resources/features/",
         glue = "",
         plugin = { "pretty", "html:target/cucumber-reports","json:target/cucumber.json" }
 )
