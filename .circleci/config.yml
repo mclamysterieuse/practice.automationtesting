@@ -15,12 +15,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "POEI23P2G4 Automation Testing"
-          command: "echo Automation!"
+          name: "Say hello"
+          command: "echo Hello, World!"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
-      - continu-integration
+      - say-hello
